@@ -16,7 +16,7 @@ var randomMovie = movies[Math.floor(Math.random() * movies.length)];
 var randomTitle = randomMovie.title;
 var randomExplanation = randomMovie.explanation;
 var randomHint = randomMovie.hint;
-
+document.getElementById('randomHint').innerHTML = randomExplanation;
 
 const submitButton = document.getElementById("submitButton");
 const hintButton = document.getElementById("hintButton");
@@ -28,6 +28,7 @@ submitButton.addEventListener('click', (event) => {
     }
     else {
         console.log("Try Again you suck!");
+        document.getElementById('guess-input').innerHTML = '';
     }
     console.log(randomTitle);
     console.log(guess);
