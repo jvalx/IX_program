@@ -28,7 +28,6 @@ submitButton.addEventListener('click', (event) => {
     }
     else {
         console.log("Try Again you suck!");
-        document.getElementById('guess-input').innerHTML = '';
     }
     console.log(randomTitle);
     console.log(guess);
