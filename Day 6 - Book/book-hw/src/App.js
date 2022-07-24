@@ -23,7 +23,7 @@ export default function App() {
       <div className= 'card card-body text-center'>
         <h1>Add Book</h1>
         <BookInputs onBookCreated = {onBookCreated}> </BookInputs>
-        <BookTable> books={books} toRemoveBook={toRemoveBook}</BookTable>
+        <BookTable books={books} toRemoveBook={toRemoveBook}> </BookTable>
         
       </div>
     </div>

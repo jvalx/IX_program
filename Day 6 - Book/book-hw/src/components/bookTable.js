@@ -8,7 +8,7 @@ export default function BookTable(props) {
 
     return (
         <div className='mt-4'>
-            <table className="table table-striped">
+            <table className="table ">
                 <thead>
                     <tr>
                     <th>Name</th>
@@ -21,10 +21,10 @@ export default function BookTable(props) {
                 {
                     props.books.map((book) =>
                     <tr key={book.id}>
-                        <td>{book.name}</td>
+                        <td>{book.title}</td>
                         <td>{book.author}</td>
                         <td>{book.ISBN}</td>
-                        <button onClick={(e) => toRemoveBook(book)}  className='btn btn-primary btn-sm'>Remove Task</button>
+                        <button onClick={(e) => toRemoveBook(book)}  className='btn btn-info btn-sm'>Remove Task</button>
                     </tr>
                 )}
 
