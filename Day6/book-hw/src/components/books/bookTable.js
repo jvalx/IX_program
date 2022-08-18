@@ -24,7 +24,9 @@ export default function BookTable(props) {
                         <td>{book.title}</td>
                         <td>{book.author}</td>
                         <td>{book.ISBN}</td>
-                        <button onClick={(e) => toRemoveBook(book)}  className='btn btn-info btn-sm'>Remove Task</button>
+                        <td>
+                            <button onClick={(e) => toRemoveBook(book)}  className='btn btn-info btn-sm'>Remove Task</button>
+                        </td>
                     </tr>
                 )}
 

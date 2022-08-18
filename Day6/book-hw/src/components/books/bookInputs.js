@@ -1,22 +1,33 @@
 import React, {useState} from 'react';
-import {Book} from '../models/book';
+import {Book} from '../../models/book';
+import Spinner from '../common/Spinner';
 
 export default function BookInputs(props) {
 
 const [bookName, setBookName] = useState('');
 const [authorName, setAuthorName] = useState('');
 const [ISBN, setISBN] = useState('');
+const [saving, setSaving] = useState(false);
 
-function onFormSubmitted(event) {
+async function onFormSubmitted(event) {
     event.preventDefault();
     // Creating a new book
     const book = new Book( 
-        (new Date()).getTime(), bookName, authorName, ISBN,
+        null, bookName, authorName, ISBN, props.user.uid
     );
-    props.onBookCreated(book);
-    setBookName('');
-    setAuthorName('');
-    setISBN('');
+
+    setSaving(true);
+    try {
+        props.onBookCreated(book);
+        setBookName('');
+        setAuthorName('');
+        setISBN('');
+    } catch (err) {
+        console.log(err);
+    }
+    setSaving(false);
+     
+    
 
 }
 
@@ -26,7 +37,7 @@ return (
         <form onSubmit = {onFormSubmitted}>
 
             <div className="mb-3">
-                <label for="exampleFormControlInput1" className="form-label">Title</label>
+                <label  className="form-label">Title</label>
                 <input 
                     value={bookName}
                     onChange = {(e) => setBookName(e.target.value)}
@@ -36,7 +47,7 @@ return (
             </div>
 
             <div className="mb-3">
-                <label for="exampleFormControlInput1" className="form-label">Author</label>
+                <label className="form-label">Author</label>
                 <input 
                     value={authorName}
                     type="text" 
@@ -46,7 +57,7 @@ return (
             </div>
 
             <div className="mb-3">
-                <label for="exampleFormControlInput1" className="form-label">ISBN#</label>
+                <label className="form-label">ISBN#</label>
                 <input 
                     value={ISBN}
                     onChange = {(e) => setISBN(e.target.value)}  
@@ -60,7 +71,14 @@ return (
                         onClick={onFormSubmitted}
                         className="btn btn-primary" 
                         type="submit">
-                    Submit</button>
+                            {
+                                saving ?
+                                <Spinner variant= "info"/>
+                                :
+                                "+"
+
+                            }
+                    </button>
                 </div>
         </form>
     </div>

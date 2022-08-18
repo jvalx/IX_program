@@ -58,10 +58,11 @@ class Task {
   
         toggle.addEventListener('click', (e) => this.onToggleButtonClick(task));
        
-  
+        toggleCell.append(toggle);
         row.append(nameCell);
         row.append(completedCell);
         row.append(toggleCell);
+
 
         this.tableBody.append(row);
       }
